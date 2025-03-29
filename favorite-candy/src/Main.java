@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter the number of children and the maximum number for the favorite candy: ");
+        System.out.print("Enter the number of children: ");
         int n = scanner.nextInt(); //Number of children
 
         System.out.print("Enter the maximum number for the favorite candy: ");
@@ -19,7 +19,7 @@ public class Main {
                 candies[i] = scanner.nextInt();
             }
 
-            for (int j = 0; j <= k; j++) {
+            for (int j = 0; j < n; j++) {
                 if (candies[j] < k) {
                     candies[j] = candies[j] + 1;
                 } else {
