@@ -1,0 +1,26 @@
+n - number of children
+k - maximum snack number
+a - favorite snack of each children
+
+get n (number of children)
+get k (maximum snack number)
+
+check contraints of n and k (not > 1 and not < 100)
+    if true,
+        
+    initialize array with size n (number of children)
+
+    loop through the array (n times)
+
+    int i = 0;
+
+    do
+        for (i = 0; i >= k; i++)
+            input snack number
+            snack number add to array at index [i]
+    while (i <= k)
+
+    print array
+
+else
+    stop program
