@@ -14,7 +14,7 @@ Your task is to determine the new favorite snack numbers after applying this fli
 - The first line contains two integers `n` and `k`:
   - `n` — the number of children.
   - `k` — the maximum snack number.
-- The second line contains `n` space-separated integers representing the initial favorite snack numbers of the children.
+- The second line contains `a` space-separated integers representing the initial favorite snack numbers of the children.
 
 ## Constraints
 - `1 \leq n \leq 100`
