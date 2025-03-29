@@ -17,9 +17,9 @@ Your task is to determine the new favorite snack numbers after applying this fli
 - The second line contains `a` space-separated integers representing the initial favorite snack numbers of the children.
 
 ## Constraints
-- `1 \leq n \leq 100`
-- `1 \leq k \leq 100`
-- `1 \leq a_i \leq k`
+- `1 <= n <= 100`
+- `1 <= k <= 100`
+- `1 <= a <= k`
 
 ## Output Format
 - Output `n` space-separated integers representing the new favorite snack numbers of the children after flipping.
@@ -46,14 +46,6 @@ Your task is to determine the new favorite snack numbers after applying this fli
 ```
 1 1 2
 ```
-
-## Solution Approach
-- Read input values `n` and `k`.
-- Read the list of favorite snack numbers.
-- Apply the flipping rule:
-  - If the number is less than `k`, increment it by `1`.
-  - If the number is equal to `k`, reset it to `1`.
-- Print the updated list.
 
 ## License
 This problem statement is intended for educational and problem-solving purposes.
