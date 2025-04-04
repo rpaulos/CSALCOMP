@@ -7,7 +7,7 @@ public class Main {
         String input = scanner.nextLine();
         String[] parts = input.split(" ");
 
-        int n = 0, k = 0;
+        int n, k;
 
         try {
             n = Integer.parseInt(parts[0]); // Number of children
@@ -41,6 +41,11 @@ public class Main {
                     if (favorite_candy_numbers[j] < k ) {
                         //increment the favorite_candy_numbers if it is less than the maximum fav candy number
                         favorite_candy_numbers[j] = favorite_candy_numbers[j] + 1;
+                    } else if (favorite_candy_numbers[j] > k) {
+                        //end program if it is greater than the maximum fav candy number
+                        System.out.println("Invalid input. Please enter numbers between 1 and " + k);
+                        scanner.close();
+                        return;
                     } else {
                         //set the favorite_candy_numbers to 1 if it is already the maximum fav candy number
                         favorite_candy_numbers[j] = 1;
