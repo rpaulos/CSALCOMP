@@ -38,7 +38,6 @@ public class Main {
                     // System.out.println("Staring Chamber: " + startingChamber);
                     // System.out.println("Passages: " + Arrays.deepToString(passages));
 
-
                 } else {
                     scanner.close();
                     return;
@@ -94,7 +93,8 @@ public class Main {
     public static int[] visitedChambers(int[][] passages, int m, int startingChamber) {
         int[] temp = new int[m];
         
-        //insert logic here
+        //insert code here
+        //starting chamber, then look at the 2d passages array,
 
         return temp;
     }
