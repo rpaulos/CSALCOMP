@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -31,9 +30,15 @@ public class Main {
                 if (valid == true) {
                     //get u and v
                     int[][] passages = (getPassages(n, m));
-                    System.out.println("Passages: " + Arrays.deepToString(passages));
 
-                    //method to get u and v
+                    int startingChamber = scanner.nextInt();
+
+                    int[] orderOfVisitedChambers = new int[m];
+
+                    // System.out.println("Staring Chamber: " + startingChamber);
+                    // System.out.println("Passages: " + Arrays.deepToString(passages));
+
+
                 } else {
                     scanner.close();
                     return;
@@ -47,7 +52,6 @@ public class Main {
     }
 
     public static boolean validateInputNM(int n, int m) {
-
         if (n < 2 || n > 100) {
             System.err.println("The value of n must be between 2 and 100");
             return false;
@@ -87,4 +91,11 @@ public class Main {
         return inputPassages;
     }
 
+    public static int[] visitedChambers(int[][] passages, int m, int startingChamber) {
+        int[] temp = new int[m];
+        
+        //insert logic here
+
+        return temp;
+    }
  }
