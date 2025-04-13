@@ -32,7 +32,11 @@ This project aims to:
 
 ## Contributors
 - **Rae Paulos** –
-- Insert group members
+- **Leon Marco Devela** - @leonnmarco
+- **Tristan Jay Sevilla** - @Hyakkki
+- **John Mikael Evangelista** - @Kyojurouu
+- **Jersey Marisga** - @jmarisga
+- Insert other group members
 
 ## License
 This project is for educational purposes and is not intended for commercial use.
