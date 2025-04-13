@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -17,6 +18,7 @@ public class Main {
             scanner.close();
 
         } else if (parts.length < 2) {
+            System.err.println("Minimum number of input is 2");
             scanner.close();
 
         } else {
@@ -28,7 +30,8 @@ public class Main {
 
                 if (valid == true) {
                     //get u and v
-                    int[][] passages = new int[2][m];
+                    int[][] passages = (getPassages(n, m));
+                    System.out.println("Passages: " + Arrays.deepToString(passages));
 
                     //method to get u and v
                 } else {
@@ -59,18 +62,29 @@ public class Main {
     }
 
     public static int[][] getPassages(int n, int m) {
-        int[][] inputPassages = new int[1][m];
+        int[][] inputPassages = new int[m][2];
+        Scanner scanner = new Scanner(System.in);
 
         for (int i = 0; i < m; i++) {
-            for (int j = 0; j < 2; j++) {
-                Scanner scanner = new Scanner(System.in);
-                String inputPassagesString = scanner.nextLine();
-                String[] splitPassagesString = inputPassagesString.split(" ");
+            try {
+                String input = scanner.nextLine();
+                String[] parts = input.trim().split(" ");
 
-                
+                if (parts.length != 2) {
+                    System.err.println("The minimum number of input for passages is two numbers");
+                    i--;
+                    continue;
+                }
+
+                inputPassages[i][0] = Integer.parseInt(parts[0]);
+                inputPassages[i][1] = Integer.parseInt(parts[1]);
+
+            } catch (NumberFormatException e) {
+                System.err.println("Input should only contain numeric characters");
+                i--;
             }
         }
-
+        return inputPassages;
     }
 
  }
