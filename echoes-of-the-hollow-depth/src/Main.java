@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -27,7 +28,7 @@ public class Main {
 
                 boolean valid = validateInputNM(n, m);
 
-                if (valid == true) {
+                if (valid) {
                     //get u and v
                     int[][] passages = (getPassages(n, m));
 
@@ -37,6 +38,9 @@ public class Main {
 
                     // System.out.println("Staring Chamber: " + startingChamber);
                     // System.out.println("Passages: " + Arrays.deepToString(passages));
+
+                    int[] emelang = (visitedChamberss(passages, m, startingChamber));
+                    System.out.println(Arrays.toString(emelang));
 
                 } else {
                     scanner.close();
@@ -91,11 +95,48 @@ public class Main {
     }
 
     public static int[] visitedChambers(int[][] passages, int m, int startingChamber) {
-        int[] temp = new int[m];
-        
-        //insert code here
-        //starting chamber, then look at the 2d passages array,
+        int[] temp = new int[m + 1];
+        temp[0] = startingChamber;
 
+        int currentChamber = startingChamber;
+
+        //look at the value at index 1 for all rows
+        for (int i = 0; i < m; i ++) {
+
+            //if the value at that index is the same as the currentChamber
+            if (passages[i][0] == currentChamber) {
+
+                //int temporaryVisit = passages[i][0];
+
+                if (currentChamber < passages[i][1]) {
+                    int visit = passages[i][1];
+                    currentChamber = visit;
+
+                    for (int j = 0; j < temp.length; j++) {
+                        if (temp[j] == 0) {
+                            temp[j] = currentChamber;
+                            break;
+                        }
+                    }
+                } 
+
+                if (currentChamber < passages[i][0]) {
+                    System.out.print(currentChamber);
+                    System.out.println(" currentChamber < " + passages[i][0]);
+                    int visit = passages[i][0];
+                    currentChamber = visit;
+
+                    for (int j = 0; j < temp.length; j++) {
+                        if (temp[j] == 0) {
+                            temp[j] = currentChamber;
+                            break;
+                        }
+                    }
+                }
+
+            } 
+        }
         return temp;
     }
- }
+    
+}
