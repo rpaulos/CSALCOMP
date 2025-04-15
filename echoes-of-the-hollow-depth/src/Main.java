@@ -107,19 +107,15 @@ public class Main {
             graph.computeIfAbsent(passage[1], k -> new ArrayList<>()).add(passage[0]);
         }
 
-        // Step 2: Sort each chamber's adjacency list so we prioritize smaller numbers first in DFS
         for (List<Integer> neighbors : graph.values()) {
             Collections.sort(neighbors);
         }
 
-        // Step 3: Prepare data structures for DFS
-        List<Integer> visited = new ArrayList<>();       // List to store the order of visited chambers
-        Set<Integer> visitedSet = new HashSet<>();       // Set to track visited chambers and avoid cycles
+        List<Integer> visited = new ArrayList<>();       
+        Set<Integer> visitedSet = new HashSet<>();       
 
-        // Step 4: Perform DFS starting from the given chamber
         dfs(startingChamber, graph, visited, visitedSet);
 
-        // Step 5: Convert the result list to an array and return
         int[] result = new int[visited.size()];
         for (int i = 0; i < visited.size(); i++) {
             result[i] = visited.get(i);
@@ -129,14 +125,11 @@ public class Main {
     }
 
     private static void dfs(int node, Map<Integer, List<Integer>> graph, List<Integer> visited, Set<Integer> visitedSet) {
-        // Base case: if we've already visited this node, return
         if (visitedSet.contains(node)) return;
     
-        // Mark the current node as visited
         visitedSet.add(node);
         visited.add(node);
     
-        // Recursively visit all neighbors in ascending order
         List<Integer> neighbors = graph.getOrDefault(node, new ArrayList<>());
         for (int neighbor : neighbors) {
             dfs(neighbor, graph, visited, visitedSet);
