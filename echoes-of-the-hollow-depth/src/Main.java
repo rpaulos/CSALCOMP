@@ -1,5 +1,12 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
 
@@ -39,7 +46,7 @@ public class Main {
                     // System.out.println("Staring Chamber: " + startingChamber);
                     // System.out.println("Passages: " + Arrays.deepToString(passages));
 
-                    int[] emelang = (visitedChamberss(passages, m, startingChamber));
+                    int[] emelang = (visitedChambers(passages, m, startingChamber));
                     System.out.println(Arrays.toString(emelang));
 
                 } else {
@@ -94,49 +101,92 @@ public class Main {
         return inputPassages;
     }
 
-    public static int[] visitedChambers(int[][] passages, int m, int startingChamber) {
-        int[] temp = new int[m + 1];
-        temp[0] = startingChamber;
+    // public static int[] visitedChambers(int[][] passages, int m, int startingChamber) {
+    //     int[] temp = new int[m + 1];
+    //     temp[0] = startingChamber;
 
-        int currentChamber = startingChamber;
+    //     int currentChamber = startingChamber;
 
-        //look at the value at index 1 for all rows
-        for (int i = 0; i < m; i ++) {
+    //     //look at the value at index 1 for all rows
+    //     for (int i = 0; i < m; i ++) {
 
-            //if the value at that index is the same as the currentChamber
-            if (passages[i][0] == currentChamber) {
+    //         //if the value at that index is the same as the currentChamber
+    //         if (passages[i][0] == currentChamber) {
 
-                //int temporaryVisit = passages[i][0];
+    //             //int temporaryVisit = passages[i][0];
 
-                if (currentChamber < passages[i][1]) {
-                    int visit = passages[i][1];
-                    currentChamber = visit;
+    //             if (currentChamber < passages[i][1]) {
+    //                 int visit = passages[i][1];
+    //                 currentChamber = visit;
 
-                    for (int j = 0; j < temp.length; j++) {
-                        if (temp[j] == 0) {
-                            temp[j] = currentChamber;
-                            break;
-                        }
-                    }
-                } 
+    //                 for (int j = 0; j < temp.length; j++) {
+    //                     if (temp[j] == 0) {
+    //                         temp[j] = currentChamber;
+    //                         break;
+    //                     }
+    //                 }
+    //             } 
 
-                if (currentChamber < passages[i][0]) {
-                    System.out.print(currentChamber);
-                    System.out.println(" currentChamber < " + passages[i][0]);
-                    int visit = passages[i][0];
-                    currentChamber = visit;
+    //             if (currentChamber < passages[i][0]) {
+    //                 System.out.print(currentChamber);
+    //                 System.out.println(" currentChamber < " + passages[i][0]);
+    //                 int visit = passages[i][0];
+    //                 currentChamber = visit;
 
-                    for (int j = 0; j < temp.length; j++) {
-                        if (temp[j] == 0) {
-                            temp[j] = currentChamber;
-                            break;
-                        }
-                    }
-                }
+    //                 for (int j = 0; j < temp.length; j++) {
+    //                     if (temp[j] == 0) {
+    //                         temp[j] = currentChamber;
+    //                         break;
+    //                     }
+    //                 }
+    //             }
 
-            } 
-        }
-        return temp;
-    }
+    //         } 
+    //     }
+    //     return temp;
+    // }
     
+    public static int[] visitedChambers(int[][] passages, int m, int startingChamber) {
+        Map<Integer, List<Integer>> graph = new HashMap<>();
+
+        for (int[] passage : passages) {
+            // Add both directions since passages are bidirectional
+            graph.computeIfAbsent(passage[0], k -> new ArrayList<>()).add(passage[1]);
+            graph.computeIfAbsent(passage[1], k -> new ArrayList<>()).add(passage[0]);
+        }
+
+        // Step 2: Sort each chamber's adjacency list so we prioritize smaller numbers first in DFS
+        for (List<Integer> neighbors : graph.values()) {
+            Collections.sort(neighbors);
+        }
+
+        // Step 3: Prepare data structures for DFS
+        List<Integer> visited = new ArrayList<>();       // List to store the order of visited chambers
+        Set<Integer> visitedSet = new HashSet<>();       // Set to track visited chambers and avoid cycles
+
+        // Step 4: Perform DFS starting from the given chamber
+        dfs(startingChamber, graph, visited, visitedSet);
+
+        // Step 5: Convert the result list to an array and return
+        int[] result = new int[visited.size()];
+        for (int i = 0; i < visited.size(); i++) {
+            result[i] = visited.get(i);
+        }
+        return result;
+
+    }
+    private static void dfs(int node, Map<Integer, List<Integer>> graph, List<Integer> visited, Set<Integer> visitedSet) {
+        // Base case: if we've already visited this node, return
+        if (visitedSet.contains(node)) return;
+    
+        // Mark the current node as visited
+        visitedSet.add(node);
+        visited.add(node);
+    
+        // Recursively visit all neighbors in ascending order
+        List<Integer> neighbors = graph.getOrDefault(node, new ArrayList<>());
+        for (int neighbor : neighbors) {
+            dfs(neighbor, graph, visited, visitedSet);
+        }
+    }
 }
