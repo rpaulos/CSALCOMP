@@ -40,11 +40,6 @@ public class Main {
 
                     int startingChamber = scanner.nextInt();
 
-                    // int[] orderOfVisitedChambers = new int[m];
-
-                    // // System.out.println("Staring Chamber: " + startingChamber);
-                    // // System.out.println("Passages: " + Arrays.deepToString(passages));
-
                     int[] orderVisited = (visitedChambers(passages, m, startingChamber));
 
                     for (int num : orderVisited) {
@@ -102,51 +97,6 @@ public class Main {
         }
         return inputPassages;
     }
-
-    // public static int[] visitedChambers(int[][] passages, int m, int startingChamber) {
-    //     int[] temp = new int[m + 1];
-    //     temp[0] = startingChamber;
-
-    //     int currentChamber = startingChamber;
-
-    //     //look at the value at index 1 for all rows
-    //     for (int i = 0; i < m; i ++) {
-
-    //         //if the value at that index is the same as the currentChamber
-    //         if (passages[i][0] == currentChamber) {
-
-    //             //int temporaryVisit = passages[i][0];
-
-    //             if (currentChamber < passages[i][1]) {
-    //                 int visit = passages[i][1];
-    //                 currentChamber = visit;
-
-    //                 for (int j = 0; j < temp.length; j++) {
-    //                     if (temp[j] == 0) {
-    //                         temp[j] = currentChamber;
-    //                         break;
-    //                     }
-    //                 }
-    //             } 
-
-    //             if (currentChamber < passages[i][0]) {
-    //                 System.out.print(currentChamber);
-    //                 System.out.println(" currentChamber < " + passages[i][0]);
-    //                 int visit = passages[i][0];
-    //                 currentChamber = visit;
-
-    //                 for (int j = 0; j < temp.length; j++) {
-    //                     if (temp[j] == 0) {
-    //                         temp[j] = currentChamber;
-    //                         break;
-    //                     }
-    //                 }
-    //             }
-
-    //         } 
-    //     }
-    //     return temp;
-    // }
     
     public static int[] visitedChambers(int[][] passages, int m, int startingChamber) {
         Map<Integer, List<Integer>> graph = new HashMap<>();
