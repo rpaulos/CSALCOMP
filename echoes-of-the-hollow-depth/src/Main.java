@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -41,13 +40,16 @@ public class Main {
 
                     int startingChamber = scanner.nextInt();
 
-                    int[] orderOfVisitedChambers = new int[m];
+                    // int[] orderOfVisitedChambers = new int[m];
 
-                    // System.out.println("Staring Chamber: " + startingChamber);
-                    // System.out.println("Passages: " + Arrays.deepToString(passages));
+                    // // System.out.println("Staring Chamber: " + startingChamber);
+                    // // System.out.println("Passages: " + Arrays.deepToString(passages));
 
-                    int[] emelang = (visitedChambers(passages, m, startingChamber));
-                    System.out.println(Arrays.toString(emelang));
+                    int[] orderVisited = (visitedChambers(passages, m, startingChamber));
+
+                    for (int num : orderVisited) {
+                        System.out.print(num + " ");
+                    }
 
                 } else {
                     scanner.close();
@@ -175,6 +177,7 @@ public class Main {
         return result;
 
     }
+
     private static void dfs(int node, Map<Integer, List<Integer>> graph, List<Integer> visited, Set<Integer> visitedSet) {
         // Base case: if we've already visited this node, return
         if (visitedSet.contains(node)) return;
