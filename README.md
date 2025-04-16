@@ -31,11 +31,11 @@ This project aims to:
 -
 
 ## Contributors
-- **Rae Paulos** –
-- **Leon Marco Devela** - @leonnmarco
-- **Tristan Jay Sevilla** - @Hyakkki
-- **John Mikael Evangelista** - @Kyojurouu
-- **Jersey Marisga** - @jmarisga
+- **Rae Paulos** – 
+- **[Leon Marco Devela](https://github.com/leonnmarcoo)** - 
+- **[Tristan Jay Sevilla](https://github.com/Hyakkki)** - 
+- **[John Mikael Evangelista](https://github.com/Kyojurouu)** -
+- **[Jersey Marisga](https://github.com/jmarisga)** - 
 - Insert other group members
 
 ## License
